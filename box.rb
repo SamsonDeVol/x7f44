@@ -2,10 +2,10 @@ class Box
 
   attr_reader :shut_tiles, :number_of_tiles
 
-  def initialize(number_of_tiles)
+  def initialize(number_of_tiles, tiles = [], shut_tiles = [])
     @number_of_tiles = number_of_tiles
-    @tiles = []
-    @shut_tiles = []
+    @tiles = tiles
+    @shut_tiles = shut_tiles
   end
 
   def set_tiles
@@ -19,11 +19,16 @@ class Box
   end
 
   def can_flip_for?(value)
-    false
+    Integer(value) == @tiles[Integer(value)-1]
   end
 
   def get_tiles
     @tiles
+  end
+
+  def flip_tiles(value)
+    @tiles.delete_at(Integer(value)-1)
+    @shut_tiles[Integer(value)-1] == Integer(value)
   end
 
   def to_s

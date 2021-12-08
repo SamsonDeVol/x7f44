@@ -11,7 +11,7 @@ class Game
   end
 
   def over?
-    box.shut? || box.can_flip_for?(dice.map(&:value).reduce(:+))
+    box.shut?
   end
 
   def start!
@@ -35,11 +35,18 @@ class Game
     puts "\n"
     puts "Which tiles would you like to flip (separate by spaces): "
     tiles_to_flip = gets.chomp
+
+    if box.can_flip_for?(tiles_to_flip)
+      box.flip_tiles(tiles_to_flip)
+    else 
+      puts "cannot flip tile(s)"
+    end
+ 
     prepare_next_round
   end
 
   def results
-    box.shut? ? WINNING_MESSAGE : "Game over, you did not shut da box."
+    over? ? WINNING_MESSAGE : "Game over, you did not shut da box."
   end
 
 end
