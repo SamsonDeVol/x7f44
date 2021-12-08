@@ -35,13 +35,11 @@ class Game
     puts "\n"
     puts "Which tiles would you like to flip (separate by spaces): "
     tiles_to_flip = gets.chomp
-
     if box.can_flip_for?(tiles_to_flip)
       box.flip_tiles(tiles_to_flip)
     else 
       puts "cannot flip tile(s)"
     end
- 
     prepare_next_round
   end
 

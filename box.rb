@@ -15,7 +15,7 @@ class Box
   end
 
   def shut?
-    @tiles.empty? && @shut_tiles.length == number_of_tiles
+    @shut_tiles.length == number_of_tiles
   end
 
   def can_flip_for?(value)
@@ -27,8 +27,9 @@ class Box
   end
 
   def flip_tiles(value)
-    @tiles.delete_at(Integer(value)-1)
-    @shut_tiles[Integer(value)-1] == Integer(value)
+    @tiles[Integer(value)-1] = "."
+    @shut_tiles.append(value)
+
   end
 
   def to_s
