@@ -1,7 +1,7 @@
 class Game
 
   WELCOME_MESSAGE = "Welcome to Shut da Box!"
-  W_M = "You shut da box!"
+  WINNING_MESSAGE = "You shut da box!"
 
   attr_reader :box, :dice
 
@@ -39,7 +39,7 @@ class Game
   end
 
   def results
-    box.shut? ? W_M : "Game over, you did not shut da box."
+    box.shut? ? WINNING_MESSAGE : "Game over, you did not shut da box."
   end
 
 end
