@@ -12,6 +12,7 @@ class Die
 
   def roll!
     self.value = prng.rand(1..number_of_sides)
+    puts (value)
   end
 
   def makeRoll
